@@ -1,0 +1,36 @@
+
+from dataclasses import dataclass
+
+
+@dataclass
+class Location:
+    city: str
+    country: str
+
+
+@dataclass
+class Connection:
+    origin: Location
+    destination: Location
+    status: str = "Active"
+
+    def report(self):
+        print("LONG-DISTANCE CONNECTION")
+        print("-" * 30)
+        print(f"Origin:      {self.origin.city}, "
+              f"{self.origin.country}")
+        print(f"Destination: {self.destination.city}, "
+              f"{self.destination.country}")
+        print(f"Status:      {self.status}")
+        print("Objective:   Reduce physical distance")
+        print("Priority:    One day at a time")
+        print("Connection:  Stable")
+
+
+if __name__ == "__main__":
+    relationship = Connection(
+        origin=Location("Abu Dhabi", "UAE"),
+        destination=Location("North Carolina", "USA"),
+    )
+
+    relationship.report()
